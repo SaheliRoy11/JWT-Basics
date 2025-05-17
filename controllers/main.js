@@ -1,5 +1,5 @@
 
-const customAPIError = require('../errors/custom-error');
+const { BadRequestError } = require('../errors/index');
 
 const jwt = require('jsonwebtoken');
 
@@ -9,7 +9,7 @@ const login = (req, res) => {
 
     //username and password needs to have a value, otherwise it will throw an error which will be handled by our custom error handler
     if(!username || !password) {
-        throw new customAPIError('Please provide email and password', 400);
+        throw new BadRequestError('Please provide email and password');
     }
 
     //create authentication token
